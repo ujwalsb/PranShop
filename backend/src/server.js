@@ -149,15 +149,7 @@ app.use('/api/earnings', earningsRoutes);
 app.use('/api/store-settings', storeSettingsRoutes);
 app.use('/api/fund-requests', fundRequestRoutes);
 
-// 404 handler
-app.use((_req, res) => {
-  res.status(404).json({ message: 'Route not found.' });
-});
-
-// Error handler
-app.use(errorHandler);
-
-// Serve frontend static files in production
+// Serve frontend static files in production (before 404 handler)
 if (config.nodeEnv === 'production') {
   const frontendDist = path.resolve(__dirname, '../../frontend/dist');
   app.use(express.static(frontendDist));
@@ -170,6 +162,14 @@ if (config.nodeEnv === 'production') {
     res.sendFile(path.resolve(frontendDist, 'index.html'));
   });
 }
+
+// 404 handler (API-only in production; fallback for unknown routes)
+app.use((_req, res) => {
+  res.status(404).json({ message: 'Route not found.' });
+});
+
+// Error handler
+app.use(errorHandler);
 
 // Start server
 const startServer = async () => {
