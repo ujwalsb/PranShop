@@ -326,7 +326,7 @@ For production, consider:
 
 ```bash
 cd frontend
-npm run build    # outputs to frontend/dist/
+npm run build    # outputs to dist/ (project root)
 ```
 
 The built files can be served via:

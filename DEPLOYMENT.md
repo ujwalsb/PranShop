@@ -98,11 +98,10 @@ If you prefer manual upload:
 
 ```bash
 cd frontend
-npm install
-npm run build
+npm install && npm run build
 ```
 
-This creates the `frontend/dist/` folder with the production build.
+This creates the `dist/` folder at the project root with the production build.
 
 ### 3b. Upload to Hostinger
 
@@ -203,8 +202,8 @@ For production, consider using **Cloudinary** or **AWS S3** for uploads. Current
 
 ### Frontend shows blank page or 404
 - Make sure the frontend build succeeded
-- The frontend `dist/` folder must exist at `frontend/dist/`
-- The backend serves static files only in `NODE_ENV=production`
+- The frontend `dist/` folder must exist at the project root (`dist/`)
+- The backend serves static files if the `dist/` folder exists
 
 ### CORS errors in browser console
 - Ensure `CLIENT_URL` is set to your exact production domain (with `https://`)

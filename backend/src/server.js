@@ -7,6 +7,7 @@ const { mongoSanitize } = require('./middleware/sanitize');
 const hpp = require('hpp');
 const compression = require('compression');
 const path = require('path');
+const fs = require('fs');
 const responseTime = require('response-time');
 
 const config = require('./config/env');
@@ -150,8 +151,8 @@ app.use('/api/store-settings', storeSettingsRoutes);
 app.use('/api/fund-requests', fundRequestRoutes);
 
 // Serve frontend static files in production (before 404 handler)
-if (config.nodeEnv === 'production') {
-  const frontendDist = path.resolve(__dirname, '../../frontend/dist');
+const frontendDist = path.resolve(__dirname, '../../dist');
+if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
 
   // SPA fallback - serve index.html for all non-API, non-upload routes

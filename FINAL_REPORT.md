@@ -97,7 +97,7 @@ NODE_ENV=production pm2 start ecosystem.config.js
 - Log rotation via PM2
 
 ### Hostinger Notes
-- Frontend build (`frontend/dist/`) can be deployed to Hostinger's static hosting
+- Frontend build (`dist/` at project root) can be deployed to Hostinger's static hosting
 - Backend requires a Node.js hosting plan or VPS
 - Set `NODE_ENV=production`, configure DNS, enable HTTPS
 
