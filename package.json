@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "agentation": "^3.0.2"
+  },
+  "dependencies": {
+    "mongodb": "^7.3.0"
+  }
+}
